@@ -4,11 +4,11 @@ import { FaDownload } from "react-icons/fa";
 const Resume = () => {
   // Google Drive Embed URL
   const resumePreviewUrl =
-    "https://drive.google.com/file/d/1PQafLCMFDCMYom12ZV_HpeThdF6XI7Mi/preview";
+    "https://drive.google.com/file/d/1bKk_7uGjYfmAtZBEJpoPWmHOmyZ6IPH2/preview";
 
   // Google Drive Direct Download Link (Modified)
   const resumeDownloadUrl =
-    "https://drive.google.com/uc?export=download&id=1PQafLCMFDCMYom12ZV_HpeThdF6XI7Mi";
+    "https://drive.google.com/uc?export=download&id=1bKk_7uGjYfmAtZBEJpoPWmHOmyZ6IPH2";
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-base-200 p-6">
