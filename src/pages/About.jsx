@@ -22,7 +22,7 @@ const About = () => {
             A <span className="font-semibold">Frontend Developer</span>{" "}
             passionate about crafting modern, responsive, and high-performance
             web applications. With
-            <span className="font-semibold"> 2+ years</span> of experience in
+            <span className="font-semibold"> 3.5+ years</span> of experience in
             <span className="font-semibold"> React.js</span>, I specialize in
             <span className="font-semibold">
               {" "}
@@ -38,9 +38,13 @@ const About = () => {
           </h3>
           <p className="mt-2 text-neutral-content">
             <span className="font-semibold">
-              React.js, Redux, JavaScript (ES6+), Tailwind CSS, Material-UI,
-              Firebase, Jest
+              React.js, Redux, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS,
+              Daisy-UI, Responsive Design.
             </span>
+          </p>
+          <p className="mt-1 text-neutral-content">
+            <span className="font-semibold">Testing:</span> Jest, React Testing
+            Library.
           </p>
           <p className="mt-1 text-neutral-content">
             <span className="font-semibold">Tools:</span> Git, GitHub, VS Code,

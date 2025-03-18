@@ -1,84 +1,85 @@
-import React, { useState } from "react";
-import { Link } from "react-router";
+import React, { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const location = useLocation(); // Detect route change
+
+  // Close menu when navigating to a new page
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <nav className="navbar bg-base-300 shadow-sm px-4">
-      {/* Left Section: Brand Name */}
-      <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
-          NextGenDev
-        </Link>
-      </div>
+    <nav className="bg-base-300 shadow-sm relative z-50">
+      <div className="container mx-auto flex justify-between items-center p-4">
+        {/* Logo */}
+        <a className="text-xl font-bold">NextGenDev</a>
 
-      {/* Right Section: Navigation */}
-      <div className="hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 space-x-4">
+        {/* Hamburger Menu Button (Visible Only on Mobile) */}
+        <button
+          className="md:hidden block text-xl focus:outline-none"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          ☰
+        </button>
+
+        {/* Navigation Menu */}
+        <ul
+          ref={menuRef}
+          className={`absolute md:static top-16 left-0 w-full md:w-auto bg-base-300 md:bg-transparent shadow-md md:shadow-none p-4 md:p-0 transition-all duration-300 ease-in-out ${
+            isOpen
+              ? "opacity-100 translate-y-0 visible"
+              : "opacity-0 -translate-y-5 invisible md:visible md:opacity-100 md:translate-y-0"
+          } md:flex md:space-x-6`}
+        >
           <li>
-            <Link to="/home">Home</Link>
+            <Link
+              to="/home"
+              className="block px-3 py-2 hover:text-primary md:inline-block"
+            >
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link
+              to="/about"
+              className="block px-3 py-2 hover:text-primary md:inline-block"
+            >
+              About
+            </Link>
           </li>
           <li>
-            <Link to="/projects">Projects</Link>
+            <Link
+              to="/projects"
+              className="block px-3 py-2 hover:text-primary md:inline-block"
+            >
+              Projects
+            </Link>
           </li>
           <li>
-            <Link to="/resume">Resume</Link>
+            <Link
+              to="/resume"
+              className="block px-3 py-2 hover:text-primary md:inline-block"
+            >
+              Resume
+            </Link>
           </li>
         </ul>
       </div>
-
-      {/* Mobile Menu (Hamburger) */}
-      <div className="lg:hidden">
-        <button className="btn btn-ghost" onClick={() => setIsOpen(!isOpen)}>
-          {/* Hamburger Icon */}
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16m-7 6h7"
-            ></path>
-          </svg>
-        </button>
-      </div>
-
-      {/* Mobile Sidebar Menu */}
-      {isOpen && (
-        <div className="absolute top-16 right-4 bg-base-200 shadow-lg rounded-lg p-4 w-48">
-          <ul className="flex flex-col space-y-3">
-            <li>
-              <Link to="/home" onClick={() => setIsOpen(false)}>
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" onClick={() => setIsOpen(false)}>
-                About
-              </Link>
-            </li>
-            <li>
-              <Link to="/projects" onClick={() => setIsOpen(false)}>
-                Projects
-              </Link>
-            </li>
-            <li>
-              <Link to="/resume" onClick={() => setIsOpen(false)}>
-                Resume
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
     </nav>
   );
 };

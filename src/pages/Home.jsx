@@ -41,7 +41,7 @@ const Home = () => {
           transition={{ duration: 1, delay: 0.3 }}
           className="text-2xl mt-4 text-accent"
         >
-          A Passionate Frontend Developer 🚀
+          Crafting Scalable & High-Performance Web Experiences 🚀
         </motion.h2>
 
         {/* Animated Description */}
@@ -51,13 +51,23 @@ const Home = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="mt-4 text-lg text-neutral-content max-w-xl"
         >
-          I specialize in building modern, responsive, and high-performance web
-          applications using
-          <span className="text-primary font-semibold">
+          A results-driven <strong>Frontend Engineer</strong> with a passion for
+          <strong>
             {" "}
-            React.js, Tailwind CSS
-          </span>
-          , and the latest frontend technologies.
+            building dynamic, scalable, and high-performance web applications
+          </strong>
+          . Experienced in crafting seamless user experiences with
+          <strong>
+            {" "}
+            React.js, Redux, Tailwind CSS, and cutting-edge frontend
+            technologies
+          </strong>
+          . Dedicated to optimizing application performance through
+          <strong>
+            {" "}
+            lazy loading, code-splitting, and efficient state management
+          </strong>
+          .
         </motion.p>
 
         {/* Call-to-Action Button */}
